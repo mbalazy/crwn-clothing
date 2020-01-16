@@ -5,10 +5,10 @@
   background-color: black;
   padding: 20px 30px;
   width: auto;
-  min-width: 160px;
+  min-width: 150px;
   border: 1px solid black;
   cursor: pointer;
-  transform: all 0.2s;
+  transition: all 0.1s;
   text-transform: uppercase;
   font-weight: bolder;
   // line-height: 50px;
@@ -26,5 +26,16 @@
 
   &:active {
     transform: scale(0.98);
+  }
+  &.isGoogleSignIn {
+    background-color: #4285f4;
+    transition: all 0.1s;
+
+    &:hover,
+    &:focus {
+      color: white;
+      background-color: #357ae8;
+      border: none;
+    }
   }
 }

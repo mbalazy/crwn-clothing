@@ -17,6 +17,7 @@
     justify-content: flex-end;
 
     .option {
+      min-width: 60px;
       margin-right: 20px;
       padding: 8px 14px;
       transition: transform 0.2s;
@@ -27,6 +28,7 @@
 
       &:hover {
         transform: translateY(2px);
+        cursor: pointer;
       }
     }
   }
