@@ -1,0 +1,11 @@
+.sign-in-and-sign-up {
+  max-width: 1200px;
+  margin: 40px auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+
+  &.user-signed-in {
+    font-size: 32px;
+  }
+}

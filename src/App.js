@@ -17,12 +17,24 @@ class App extends Component {
     };
   }
 
-  unsubscribeFromAuth = null; //onAuthStateChanged return a fn, when it call it closes subscription
+  unsubscribeFromAuth = null; //onAuthStateChanged return a fn, when it call it closes subscription; unsubscribeFromAuth used in componentWillUnmount
 
   componentDidMount() {
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(async user => {
-      this.setState({ currentUser: user });
-      createUserProfileDocument(user);
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+      if (userAuth) {
+        const userDocRef = await createUserProfileDocument(userAuth);
+
+        userDocRef.onSnapshot(snapshot => {
+          this.setState({
+            currentUser: {
+              id: snapshot.id,
+              ...snapshot.data()
+            }
+          });
+        });
+      } else {
+        this.setState({ currentUser: null });
+      }
     });
   }
 
@@ -32,13 +44,20 @@ class App extends Component {
 
   render() {
     const { currentUser } = this.state;
+
     return (
       <div>
         <Header currentUser={currentUser} />
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/shop" component={ShopPage} />
-          <Route exact path="/signin" component={SignInAndSignUp} />
+          {/* <Route exact path="/signin" component={SignInAndSignUp} /> */}
+          <Route
+            path="/signin"
+            render={props => (
+              <SignInAndSignUp {...props} currentUser={currentUser} />
+            )}
+          />
         </Switch>
       </div>
     );

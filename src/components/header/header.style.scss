@@ -11,6 +11,12 @@
 
   flex-wrap: wrap;
 
+  .helloUser {
+    margin-right: auto;
+    margin-left: 20px;
+    text-transform: uppercase;
+  }
+
   .options {
     width: 50%;
     display: flex;

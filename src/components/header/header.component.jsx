@@ -10,6 +10,10 @@ const Header = ({ currentUser }) => (
       <Logo className="logo" />
     </Link>
 
+    {currentUser ? (
+      <div className="helloUser">HELLO {currentUser.displayName}</div>
+    ) : null}
+
     <div className="options">
       <Link className="option" to="/">
         HOMEPAGE
