@@ -38,7 +38,7 @@ class SignIn extends Component {
     return (
       <div className="sign-in">
         <h2>I already have an account.</h2>
-        <span>sign in with your email and password.</span>
+        <span>Sign in with your email and password.</span>
 
         <form onSubmit={this.handleSubmit}>
           <FormInput
@@ -57,11 +57,11 @@ class SignIn extends Component {
             name="password"
             value={password}
             required
-            autoComplete="off"
-            // autoComplete="current-password" TODO
+            // autoComplete="off"
+            autoComplete="current-password"
           />
           <div className="buttons">
-            <CustomButton type="submit"> Sign In</CustomButton>
+            <CustomButton type="submit">Sign In</CustomButton>
             <CustomButton isGoogleSignIn onClick={signInWithGoogle}>
               Sign In with Google
             </CustomButton>

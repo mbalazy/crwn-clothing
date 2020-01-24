@@ -4,8 +4,18 @@
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+}
 
-  &.user-signed-in {
-    font-size: 32px;
+.user-signed-in {
+  max-width: 500px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .user-signed-in-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
   }
 }
