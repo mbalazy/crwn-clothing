@@ -1,3 +1,5 @@
+import produce from 'immer';
+
 const INITIALE_STATE = {
   currentUser: null
 };
@@ -5,10 +7,9 @@ const INITIALE_STATE = {
 const userReducer = (state = INITIALE_STATE, action) => {
   switch (action.type) {
     case 'SET_CURRENT_USER':
-      return {
-        ...state,
-        currentUser: action.payload
-      };
+      return produce(state, draftState => {
+        draftState.currentUser = action.payload;
+      });
 
     default:
       return state;

@@ -1,7 +1,7 @@
 import React from 'react';
 import './sign-in-and-sign-up.style.scss';
 import { connect } from 'react-redux';
-import { setCurrentUser } from '../../redux/user/user.actions';
+import { setCurrentUser } from '../../redux/reducers/user/user.actions';
 
 import SignIn from '../../components/sign-in/sign-in.component';
 import SignUp from '../../components/sign-up/sign-up.component';
