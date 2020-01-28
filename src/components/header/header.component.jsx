@@ -1,6 +1,8 @@
 import React from 'react';
 import './header.style.scss';
 import { ReactComponent as Logo } from '../../assets/crown.svg';
+import CartIcon from '../cart-icon/cart-icon.component';
+import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 
 import { connect } from 'react-redux';
 import { setCurrentUser } from '../../redux/reducers/user/user.actions';
@@ -9,7 +11,7 @@ import { Link } from 'react-router-dom';
 
 import { auth } from '../../firebase/firebase.utils';
 
-const Header = ({ currentUser, logOutUser }) => (
+const Header = ({ currentUser, logOutUser, isCartDropdownVisible }) => (
   <div className="header">
     <Link className="logo-container" to="/">
       <Logo className="logo" />
@@ -44,16 +46,18 @@ const Header = ({ currentUser, logOutUser }) => (
           SIGN IN
         </Link>
       )}
-
-      <Link className="option" to="/cart">
-        CART
-      </Link>
+      <CartIcon />
     </div>
+    {isCartDropdownVisible ? <CartDropdown /> : null}
   </div>
 );
 
-const mapStateToProps = state => ({
-  currentUser: state.user.currentUser
+const mapStateToProps = ({
+  user: { currentUser },
+  cart: { isCartDropdownVisible }
+}) => ({
+  currentUser,
+  isCartDropdownVisible
 });
 
 const mapDispatchToProps = dispatch => ({
