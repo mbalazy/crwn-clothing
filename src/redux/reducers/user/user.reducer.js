@@ -6,15 +6,16 @@ const INITIALE_STATE = {
 };
 
 const userReducer = (state = INITIALE_STATE, action) => {
-  switch (action.type) {
-    case UserActionTypes.SET_CURRENT_USER:
-      return produce(state, draftState => {
+  return produce(state, draftState => {
+    switch (action.type) {
+      case UserActionTypes.SET_CURRENT_USER:
         draftState.currentUser = action.payload;
-      });
+        break;
 
-    default:
-      return state;
-  }
+      default:
+        return state;
+    }
+  });
 };
 
 export default userReducer;

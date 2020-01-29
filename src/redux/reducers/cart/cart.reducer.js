@@ -1,20 +1,27 @@
 import { CartActionTypes } from './cart.types';
+import produce from 'immer';
+import { addItemToCart } from './cart.utils';
 
 const INITIALE_STATE = {
-  isCartDropdownVisible: false
+  isCartDropdownVisible: false,
+  cartItems: []
 };
 
 const cartReducer = (state = INITIALE_STATE, action) => {
-  switch (action.type) {
-    case CartActionTypes.TOOGLE_CART_DROPDOWN:
-      return {
-        ...state,
-        isCartDropdownVisible: !state.isCartDropdownVisible
-      };
+  return produce(state, draftState => {
+    switch (action.type) {
+      case CartActionTypes.TOOGLE_CART_DROPDOWN:
+        draftState.isCartDropdownVisible = !draftState.isCartDropdownVisible;
+        break;
 
-    default:
-      return state;
-  }
+      case CartActionTypes.ADD_ITEM:
+        addItemToCart(draftState.cartItems, action.payload);
+        break;
+
+      default:
+        return state;
+    }
+  });
 };
 
 export default cartReducer;
