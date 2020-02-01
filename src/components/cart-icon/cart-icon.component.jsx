@@ -13,7 +13,9 @@ const CartIcon = ({ toogleCartView, numberOfItemsInCart }) => (
 );
 
 const mapStateToProps = ({ cart: { cartItems } }) => ({
-  numberOfItemsInCart: cartItems.length
+  numberOfItemsInCart: cartItems.reduce((previous, current) => {
+    return previous + current.quantity;
+  }, 0)
 });
 
 const mapDispatchToProps = dispatch => ({
