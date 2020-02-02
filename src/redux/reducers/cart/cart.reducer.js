@@ -1,6 +1,10 @@
 import { CartActionTypes } from './cart.types';
 import produce from 'immer';
-import { addItemToCart } from './cart.utils';
+import {
+  addItemToCart,
+  removeItemFromCart,
+  deleteItemFromCart
+} from './cart.utils';
 
 const INITIALE_STATE = {
   isCartDropdownVisible: false,
@@ -18,9 +22,17 @@ const cartReducer = (state = INITIALE_STATE, action) => {
         addItemToCart(draftState.cartItems, action.payload);
         break;
 
+      case CartActionTypes.REMOVE_ITEM:
+        draftState.cartItems = removeItemFromCart(
+          draftState.cartItems,
+          action.payload
+        );
+        break;
+
       case CartActionTypes.DELETE_ITEM:
-        draftState.cartItems = draftState.cartItems.filter(
-          item => item.id !== action.payload
+        draftState.cartItems = deleteItemFromCart(
+          draftState.cartItems,
+          action.payload
         );
         break;
 

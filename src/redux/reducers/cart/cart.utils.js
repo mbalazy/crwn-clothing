@@ -3,14 +3,22 @@ export const addItemToCart = (cartItems, cartItemToAdd) => {
     cartItem => cartItem.id === cartItemToAdd.id
   );
 
-  if (existingCartItem) {
-    existingCartItem.quantity++;
-  } else {
-    cartItems.push({ ...cartItemToAdd, quantity: 1 });
-  }
+  existingCartItem
+    ? existingCartItem.quantity++
+    : cartItems.push({ ...cartItemToAdd, quantity: 1 });
 };
 
-export const deleteItemFromCart = (cartItems, idd) => {
-  console.log(cartItems, idd);
-  cartItems = cartItems.filter(item => item.id !== idd);
+export const removeItemFromCart = (cartItems, cartItemToRemove) => {
+  const cartItem = cartItems.find(
+    cartItem => cartItem.id === cartItemToRemove.id
+  );
+
+  cartItem.quantity--;
+
+  return cartItem.quantity !== 0
+    ? cartItems
+    : deleteItemFromCart(cartItems, cartItemToRemove);
 };
+
+export const deleteItemFromCart = (cartItems, itemToDelete) =>
+  (cartItems = cartItems.filter(item => item.id !== itemToDelete.id));
