@@ -1,4 +1,5 @@
 import { applyMiddleware, createStore } from 'redux';
+import { persistStore } from 'redux-persist';
 import rootReducer from './reducers/root-reducer';
 
 import { composeWithDevTools } from 'redux-devtools-extension';
@@ -7,7 +8,7 @@ import monitorReducersEnhancer from './enhancers/monitorReducers';
 import thunkMiddleware from 'redux-thunk';
 import loggerMiddleware from './middleware/logger';
 
-export default function configureStore(preloadedState) {
+export default preloadedState => {
   const middlewares = [loggerMiddleware, thunkMiddleware];
   const middlewareEnhancer = applyMiddleware(...middlewares);
 
@@ -22,5 +23,6 @@ export default function configureStore(preloadedState) {
     );
   }
 
-  return store;
-}
+  const persistor = persistStore(store);
+  return { store, persistor };
+};
