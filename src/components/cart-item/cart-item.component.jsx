@@ -1,7 +1,15 @@
 import React from 'react';
 import './cart-item.style.scss';
 
-const CartItem = ({ item: { name, price, imageUrl, quantity } }) => {
+import { connect } from 'react-redux';
+import { addItem, removeItem } from '../../redux/reducers/cart/cart.actions';
+
+const CartItem = ({
+  item: { name, price, imageUrl, quantity },
+  item,
+  addItem,
+  removeItem
+}) => {
   return (
     <div className="cart-item">
       <div className="image" style={{ backgroundImage: `url(${imageUrl})` }} />
@@ -10,9 +18,22 @@ const CartItem = ({ item: { name, price, imageUrl, quantity } }) => {
         <span className="item-price">
           {quantity} X ${price}
         </span>
+        <div className="arrows">
+          <button className="arrow" onClick={() => removeItem(item)}>
+            &#10094;
+          </button>
+          <button className="arrow" onClick={() => addItem(item)}>
+            &#10095;
+          </button>
+        </div>
       </div>
     </div>
   );
 };
 
-export default CartItem;
+const mapDispatchToProps = dispatch => ({
+  addItem: item => dispatch(addItem(item)),
+  removeItem: item => dispatch(removeItem(item))
+});
+
+export default connect(null, mapDispatchToProps)(CartItem);
