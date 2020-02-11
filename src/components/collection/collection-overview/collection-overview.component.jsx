@@ -4,7 +4,7 @@ import CollectionPreview from '../collection-preview/collection-preview.componen
 
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { selectCollectionsForPreview } from '../../redux/reducers/shop/shop.selectors';
+import { selectCollectionsForPreview } from '../../../redux/reducers/shop/shop.selectors';
 
 const CollectionOverview = ({ collections }) => {
   return (

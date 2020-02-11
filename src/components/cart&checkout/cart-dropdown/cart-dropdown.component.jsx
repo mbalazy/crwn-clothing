@@ -1,15 +1,15 @@
 import React from 'react';
 import './cart-dropdown.style.scss';
-import CustomButton from '../custom-button/custom-button.component';
-import CartItem from '../cart-item/cart-item.component';
+import CustomButton from '../../utils/custom-button/custom-button.component';
+import CartItem from '../../cart-item/cart-item.component';
 
 import { withRouter } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 
 import { createStructuredSelector } from 'reselect';
-import { selectCartItems } from '../../redux/reducers/cart/cart.selectors';
-import { toogleCartView } from '../../redux/reducers/cart/cart.actions';
+import { selectCartItems } from '../../../redux/reducers/cart/cart.selectors';
+import { toogleCartView } from '../../../redux/reducers/cart/cart.actions';
 
 const CartDropdown = ({ cartItems, history, dispatch }) => (
   <div className="cart-dropdown">

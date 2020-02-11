@@ -2,7 +2,7 @@ import React from 'react';
 import './collection-preview.style.scss';
 import CollectionItem from '../collection-item/collection-item.component';
 import { withRouter } from 'react-router-dom';
-import CustomButton from '../custom-button/custom-button.component';
+import CustomButton from '../../utils/custom-button/custom-button.component';
 
 const CollectionPreview = ({
   collection: { title, items, routeName },

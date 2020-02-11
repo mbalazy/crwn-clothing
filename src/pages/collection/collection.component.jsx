@@ -1,16 +1,16 @@
 import React from 'react';
 import './collection.style.scss';
 import { connect } from 'react-redux';
-import CustomButton from '../../components/custom-button/custom-button.component';
+import CustomButton from '../../components/utils/custom-button/custom-button.component';
 
 import { selectCollection } from '../../redux/reducers/shop/shop.selectors';
-
-import CollectionItem from '../../components/collection-item/collection-item.component';
+import ScrollToTop from '../../components/utils/scroll-to-top/scroll-to-top.component';
+import CollectionItem from '../../components/collection/collection-item/collection-item.component';
 
 const CollectionPage = ({ collection: { title, items }, match, history }) => {
-  console.log(match, history);
   return (
     <div className="collection-page">
+      <ScrollToTop />
       <div className="preview-header">
         <h1 className="title">{title.toUpperCase()}</h1>
         <CustomButton
