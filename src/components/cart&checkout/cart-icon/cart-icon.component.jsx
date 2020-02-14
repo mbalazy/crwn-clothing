@@ -1,12 +1,12 @@
 import React from 'react';
 import './cart-icon.styles.scss';
-import { ReactComponent as ShoppingIcon } from '../../assets/shopping-bag.svg';
+import { ReactComponent as ShoppingIcon } from '../../../assets/shopping-bag.svg';
 
 import { connect } from 'react-redux';
-import { toogleCartView } from '../../redux/reducers/cart/cart.actions';
+import { toogleCartView } from '../../../redux/reducers/cart/cart.actions';
 
 import { createStructuredSelector } from 'reselect';
-import { selectCartItemsCount } from '../../redux/reducers/cart/cart.selectors';
+import { selectCartItemsCount } from '../../../redux/reducers/cart/cart.selectors';
 
 const CartIcon = ({ toogleCartView, numberOfItemsInCart }) => (
   <div className="cart-icon" onClick={toogleCartView}>

@@ -1,7 +1,7 @@
 import React from 'react';
 import './cart-dropdown.style.scss';
 import CustomButton from '../../utils/custom-button/custom-button.component';
-import CartItem from '../../cart-item/cart-item.component';
+import CartItem from '../cart-item/cart-item.component';
 
 import { withRouter } from 'react-router-dom';
 

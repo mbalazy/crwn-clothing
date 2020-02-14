@@ -2,8 +2,8 @@ import React from 'react';
 import './header.style.scss';
 import { ReactComponent as Logo } from '../../assets/crown.svg';
 
-import CartIcon from '../cart-icon/cart-icon.component';
-import CartDropdown from '../cart-dropdown/cart-dropdown.component';
+import CartIcon from '../cart&checkout/cart-icon/cart-icon.component';
+import CartDropdown from '../cart&checkout/cart-dropdown/cart-dropdown.component';
 
 import { connect } from 'react-redux';
 import { setCurrentUser } from '../../redux/reducers/user/user.actions';

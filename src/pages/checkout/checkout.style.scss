@@ -28,8 +28,12 @@
   }
 
   .total {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     margin-top: 30px;
     margin-left: auto;
     font-size: 36px;
+    height: 90px;
   }
 }

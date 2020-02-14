@@ -7,7 +7,7 @@ import { selectCollection } from '../../redux/reducers/shop/shop.selectors';
 import ScrollToTop from '../../components/utils/scroll-to-top/scroll-to-top.component';
 import CollectionItem from '../../components/collection/collection-item/collection-item.component';
 
-const CollectionPage = ({ collection: { title, items }, match, history }) => {
+const CollectionPage = ({ collection: { title, items }, history }) => {
   return (
     <div className="collection-page">
       <ScrollToTop />

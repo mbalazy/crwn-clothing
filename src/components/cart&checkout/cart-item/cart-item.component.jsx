@@ -2,7 +2,7 @@ import React from 'react';
 import './cart-item.style.scss';
 
 import { connect } from 'react-redux';
-import { addItem, removeItem } from '../../redux/reducers/cart/cart.actions';
+import { addItem, removeItem } from '../../../redux/reducers/cart/cart.actions';
 
 const CartItem = ({
   item: { name, price, imageUrl, quantity },
