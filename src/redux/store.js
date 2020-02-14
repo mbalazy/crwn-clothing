@@ -17,7 +17,11 @@ export default preloadedState => {
 
   const middlewareEnhancer = applyMiddleware(...middlewares);
 
-  const enhancers = [middlewareEnhancer, monitorReducersEnhancer];
+  const enhancers = [middlewareEnhancer];
+
+  if (process.env.NODE_ENV === 'development') {
+    enhancers.push(monitorReducersEnhancer);
+  }
   const composedEnhancers = composeWithDevTools(...enhancers);
 
   const store = createStore(rootReducer, preloadedState, composedEnhancers);
