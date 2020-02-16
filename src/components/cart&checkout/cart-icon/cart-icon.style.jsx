@@ -1,4 +1,6 @@
-.cart-icon {
+import styled from 'styled-components';
+
+export const CartIconContainer = styled.div`
   width: 45px;
   height: 45px;
   position: relative;
@@ -29,4 +31,4 @@
   &:active {
     transform: translateY(3px);
   }
-}
+`;

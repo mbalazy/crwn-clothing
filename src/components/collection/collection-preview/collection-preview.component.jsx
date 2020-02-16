@@ -14,6 +14,7 @@ const CollectionPreview = ({
       <div className="preview-header">
         <h1 className="title">{title.toUpperCase()}</h1>
         <CustomButton
+          inverted
           onClick={() => {
             history.push(`${match.path}/${routeName}`);
           }}

@@ -14,6 +14,7 @@ const CollectionPage = ({ collection: { title, items }, history }) => {
       <div className="preview-header">
         <h1 className="title">{title.toUpperCase()}</h1>
         <CustomButton
+          inverted
           onClick={() => {
             history.goBack();
           }}

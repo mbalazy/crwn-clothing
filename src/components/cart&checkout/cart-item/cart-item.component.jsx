@@ -1,5 +1,5 @@
 import React from 'react';
-import './cart-item.style.scss';
+import { CartItemContainer } from './cart-item.style.jsx';
 
 import { connect } from 'react-redux';
 import { addItem, removeItem } from '../../../redux/reducers/cart/cart.actions';
@@ -11,7 +11,7 @@ const CartItem = ({
   removeItem
 }) => {
   return (
-    <div className="cart-item">
+    <CartItemContainer>
       <div className="image" style={{ backgroundImage: `url(${imageUrl})` }} />
       <div className="details">
         <span className="item-name">{name}</span>
@@ -27,7 +27,7 @@ const CartItem = ({
           </button>
         </div>
       </div>
-    </div>
+    </CartItemContainer>
   );
 };
 

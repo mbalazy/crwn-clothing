@@ -1,5 +1,6 @@
 import React from 'react';
-import './cart-dropdown.style.scss';
+import { CartDropdownContainer } from './cart-dropdown.style.jsx';
+
 import CustomButton from '../../utils/custom-button/custom-button.component';
 import CartItem from '../cart-item/cart-item.component';
 
@@ -12,7 +13,7 @@ import { selectCartItems } from '../../../redux/reducers/cart/cart.selectors';
 import { toogleCartView } from '../../../redux/reducers/cart/cart.actions';
 
 const CartDropdown = ({ cartItems, history, dispatch }) => (
-  <div className="cart-dropdown">
+  <CartDropdownContainer>
     <div className="cart-items">
       {cartItems.length ? (
         cartItems.map(item => <CartItem key={item.id} item={item} />)
@@ -31,7 +32,7 @@ const CartDropdown = ({ cartItems, history, dispatch }) => (
     <CustomButton inverted onClick={() => dispatch(toogleCartView())}>
       close cart
     </CustomButton>
-  </div>
+  </CartDropdownContainer>
 );
 
 const mapStateToProps = createStructuredSelector({

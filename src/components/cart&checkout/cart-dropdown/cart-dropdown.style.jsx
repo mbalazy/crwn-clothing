@@ -1,4 +1,5 @@
-.cart-dropdown {
+import styled from 'styled-components';
+export const CartDropdownContainer = styled.div`
   position: absolute;
   top: 90px;
   right: 40px;
@@ -27,4 +28,4 @@
   button {
     margin-top: 20px;
   }
-}
+`;

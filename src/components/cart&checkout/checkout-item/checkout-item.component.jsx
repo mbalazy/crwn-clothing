@@ -1,5 +1,8 @@
 import React from 'react';
-import './checkout-item.style.scss';
+import {
+  CheckoutItemContainer,
+  ImageContainer
+} from './checkout-item.style.jsx';
 
 import { connect } from 'react-redux';
 import {
@@ -16,13 +19,8 @@ const CheckoutItem = ({
   removeItem
 }) => {
   return (
-    <div className="checkout-item">
-      <div className="image-container">
-        <div
-          className="image"
-          style={{ backgroundImage: `url(${imageUrl})` }}
-        />
-      </div>
+    <CheckoutItemContainer>
+      <ImageContainer image={imageUrl} />
       <span className="name">{name}</span>
       <div className="quantity">
         <button className="arrow" onClick={() => removeItem(item)}>
@@ -37,7 +35,7 @@ const CheckoutItem = ({
       <button className="remove" onClick={() => deleteItem(item)}>
         &#10005;
       </button>
-    </div>
+    </CheckoutItemContainer>
   );
 };
 

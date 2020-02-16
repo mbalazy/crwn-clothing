@@ -1,4 +1,6 @@
-.checkout-item {
+import styled from 'styled-components';
+
+export const CheckoutItemContainer = styled.div`
   width: 100%;
   display: flex;
   min-height: 100px;
@@ -7,9 +9,7 @@
   font-size: 20px;
   align-items: center;
 
-  .name,
-  .quantity,
-  .price {
+  & > *:not(.remove) {
     width: 23%;
   }
 
@@ -31,19 +31,6 @@
     }
   }
 
-  .image-container {
-    width: 23%;
-    height: 150px;
-    padding-right: 15px;
-
-    .image {
-      width: 100%;
-      height: 100%;
-      background-size: cover;
-      background-position: center;
-    }
-  }
-
   & .remove {
     margin-right: 20px;
     border: none;
@@ -55,4 +42,13 @@
     }
     padding: 12px;
   }
-}
+`;
+
+export const ImageContainer = styled.div`
+  width: 20%;
+  height: 150px;
+  margin-right: 16px;
+  background-image: url(${props => props.image});
+  background-size: cover;
+  background-position: center;
+`;
