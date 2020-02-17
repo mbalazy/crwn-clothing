@@ -13,7 +13,6 @@ export const selectCollectionsForPreview = createSelector(
 );
 
 export const selectCollection = collectionRoute =>
-  createSelector(
-    [selectCollections],
-    collections => collections[collectionRoute]
+  createSelector([selectCollections], collections =>
+    collections ? collections[collectionRoute] : null
   );
