@@ -12,7 +12,7 @@ import { createStructuredSelector } from 'reselect';
 import { selectCartItems } from '../../../redux/reducers/cart/cart.selectors';
 import { toogleCartView } from '../../../redux/reducers/cart/cart.actions';
 
-const CartDropdown = ({ cartItems, history, dispatch }) => (
+const CartDropdown = ({ cartItems, history, toogleCartView }) => (
   <CartDropdownContainer>
     <div className="cart-items">
       {cartItems.length ? (
@@ -24,12 +24,17 @@ const CartDropdown = ({ cartItems, history, dispatch }) => (
     <CustomButton
       onClick={() => {
         history.push('/checkout');
-        dispatch(toogleCartView());
+        toogleCartView();
       }}
     >
       go to checkout
     </CustomButton>
-    <CustomButton inverted onClick={() => dispatch(toogleCartView())}>
+    <CustomButton
+      inverted
+      onClick={() => {
+        toogleCartView();
+      }}
+    >
       close cart
     </CustomButton>
   </CartDropdownContainer>
@@ -39,4 +44,10 @@ const mapStateToProps = createStructuredSelector({
   cartItems: selectCartItems
 });
 
-export default withRouter(connect(mapStateToProps)(CartDropdown));
+const mapDispatchToProps = dispatch => ({
+  toogleCartView: () => dispatch(toogleCartView())
+});
+
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(CartDropdown)
+);
