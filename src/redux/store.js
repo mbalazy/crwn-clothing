@@ -6,7 +6,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import monitorReducersEnhancer from './enhancers/monitorReducers';
 
 import createSagaMiddleware from 'redux-saga';
-import { fetchCollectionsStart } from './reducers/shop/shop.saga';
+import rootSaga from './root-saga';
 
 import loggerMiddleware from './middleware/logger';
 
@@ -30,7 +30,7 @@ export default preloadedState => {
 
   const store = createStore(rootReducer, preloadedState, composedEnhancers);
 
-  sagaMiddleware.run(fetchCollectionsStart);
+  sagaMiddleware.run(rootSaga);
 
   if (process.env.NODE_ENV !== 'production' && module.hot) {
     module.hot.accept('./reducers/root-reducer.js', () =>

@@ -6,6 +6,17 @@
   justify-content: space-evenly;
 }
 
+.loading-user,
+.login-error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-user {
+  height: 30vh;
+}
+
 .user-signed-in {
   max-width: 500px;
   height: 300px;

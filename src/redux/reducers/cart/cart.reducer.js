@@ -1,4 +1,4 @@
-import { CartActionTypes } from './cart.types';
+import CartActionTypes from './cart.types';
 import produce from 'immer';
 import {
   addItemToCart,
@@ -34,6 +34,10 @@ const cartReducer = (state = INITIALE_STATE, action) => {
           draftState.cartItems,
           action.payload
         );
+        break;
+
+      case CartActionTypes.CLEAR_CART:
+        draftState.cartItems = [];
         break;
 
       default:
