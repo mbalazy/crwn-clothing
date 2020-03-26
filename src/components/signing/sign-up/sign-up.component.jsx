@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import './sign-up.style.scss';
 import { withRouter } from 'react-router-dom';
 
@@ -8,77 +8,71 @@ import CustomButton from '../../utils/custom-button/custom-button.component';
 import { connect } from 'react-redux';
 import { signUpStart } from '../../../redux/reducers/user/user.actions';
 
-class SignUp extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      displayName: '',
-      email: '',
-      password: '',
-      confirmPassword: ''
-    };
-  }
+const SignUp = ({ signUpStart }) => {
+  const [userCredentials, setCredentials] = useState({
+    displayName: '',
+    email: '',
+    password: '',
+    confirmPassword: ''
+  });
 
-  handleSubmit = async e => {
+  const { displayName, email, password, confirmPassword } = userCredentials;
+
+  const handleSubmit = async e => {
     e.preventDefault();
-    const { displayName, email, password, confirmPassword } = this.state;
-    const { signUpStart } = this.props;
     signUpStart(displayName, email, password, confirmPassword);
   };
 
-  handleChange = e => {
+  const handleChange = e => {
     const { value, name } = e.target;
-    this.setState({ [name]: value });
+    setCredentials({ ...userCredentials, [name]: value });
   };
 
-  render() {
-    const { displayName, email, password, confirmPassword } = this.state;
-    return (
-      <div className="sign-up">
-        <h2 className="title">I do not have an account.</h2>
-        <span>Sign up with your email and password.</span>
-        <form className="sign-up-form" onSubmit={this.handleSubmit}>
-          <FormInput
-            type="text"
-            name="displayName"
-            value={displayName}
-            onChange={this.handleChange}
-            label="Display Name"
-            required
-          />
-          <FormInput
-            type="email"
-            name="email"
-            value={email}
-            onChange={this.handleChange}
-            label="Email"
-            autoComplete="off"
-            required
-          />
-          <FormInput
-            type="password"
-            name="password"
-            value={password}
-            onChange={this.handleChange}
-            label="Password"
-            autoComplete="new-password"
-            required
-          />
-          <FormInput
-            type="password"
-            name="confirmPassword"
-            value={confirmPassword}
-            onChange={this.handleChange}
-            label="Confirm password"
-            autoComplete="new-password"
-            required
-          />
-          <CustomButton type="submit">sign up</CustomButton>
-        </form>
-      </div>
-    );
-  }
-}
+  return (
+    <div className="sign-up">
+      <h2 className="title">I do not have an account.</h2>
+      <span>Sign up with your email and password.</span>
+      <form className="sign-up-form" onSubmit={handleSubmit}>
+        <FormInput
+          type="text"
+          name="displayName"
+          value={displayName}
+          onChange={handleChange}
+          label="Display Name"
+          required
+        />
+        <FormInput
+          type="email"
+          name="email"
+          value={email}
+          onChange={handleChange}
+          label="Email"
+          autoComplete="off"
+          required
+        />
+        <FormInput
+          type="password"
+          name="password"
+          value={password}
+          onChange={handleChange}
+          label="Password"
+          autoComplete="new-password"
+          required
+        />
+        <FormInput
+          type="password"
+          name="confirmPassword"
+          value={confirmPassword}
+          onChange={handleChange}
+          label="Confirm password"
+          autoComplete="new-password"
+          required
+        />
+        <CustomButton type="submit">sign up</CustomButton>
+      </form>
+    </div>
+  );
+};
 
 const mapDispatchToProps = dispatch => ({
   signUpStart: (displayName, email, password, confirmPassword) =>
