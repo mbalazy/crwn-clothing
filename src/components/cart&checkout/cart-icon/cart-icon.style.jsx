@@ -8,7 +8,6 @@ export const CartIconContainer = styled.div`
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  padding-bottom: 10px;
   transition: transform 0.2s;
   backface-visibility: hidden;
 
@@ -21,7 +20,7 @@ export const CartIconContainer = styled.div`
     position: absolute;
     font-size: 10px;
     font-weight: bold;
-    bottom: 18px;
+    bottom: 12px;
   }
 
   &:hover {

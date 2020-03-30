@@ -24,13 +24,16 @@ export const LogoContainer = styled(Link)`
   width: 70px;
 `;
 
-export const OptionsContainer = styled.div`
+export const OptionsContainer = styled.nav`
   width: 70%;
   display: flex;
   justify-content: flex-end;
+  align-items: center;
 `;
 
 export const OptionLink = styled(Link)`
+  text-decoration: none;
+  color: inherit;
   min-width: 60px;
   margin-right: 20px;
   padding: 8px 14px;

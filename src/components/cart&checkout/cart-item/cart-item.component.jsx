@@ -1,15 +1,12 @@
 import React from 'react';
 import { CartItemContainer } from './cart-item.style.jsx';
 
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addItem, removeItem } from '../../../redux/reducers/cart/cart.actions';
 
-const CartItem = ({
-  item: { name, price, imageUrl, quantity },
-  item,
-  addItem,
-  removeItem
-}) => {
+const CartItem = ({ item: { name, price, imageUrl, quantity }, item }) => {
+  const dispatch = useDispatch();
+
   return (
     <CartItemContainer>
       <div className="image" style={{ backgroundImage: `url(${imageUrl})` }} />
@@ -19,10 +16,10 @@ const CartItem = ({
           {quantity} X ${price}
         </span>
         <div className="arrows">
-          <button className="arrow" onClick={() => removeItem(item)}>
+          <button className="arrow" onClick={() => dispatch(removeItem(item))}>
             &#10094;
           </button>
-          <button className="arrow" onClick={() => addItem(item)}>
+          <button className="arrow" onClick={() => dispatch(addItem(item))}>
             &#10095;
           </button>
         </div>
@@ -31,9 +28,4 @@ const CartItem = ({
   );
 };
 
-const mapDispatchToProps = dispatch => ({
-  addItem: item => dispatch(addItem(item)),
-  removeItem: item => dispatch(removeItem(item))
-});
-
-export default connect(null, mapDispatchToProps)(CartItem);
+export default CartItem;
