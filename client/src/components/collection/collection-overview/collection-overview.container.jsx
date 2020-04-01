@@ -3,7 +3,7 @@ import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
 
 import { selectIsFetching } from '../../../redux/reducers/shop/shop.selectors';
-import WithSpinner from '../../../components/utils/with-spinner/with-spinner.component';
+import WithSpinner from '../../utils/with-spinner/with-spinner.component';
 
 import CollectionOverview from './collection-overview.component';
 
