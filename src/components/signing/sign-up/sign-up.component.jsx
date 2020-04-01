@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './sign-up.style.scss';
 import { withRouter } from 'react-router-dom';
 
 import FormInput from '../../utils/form-input/form-input.component';

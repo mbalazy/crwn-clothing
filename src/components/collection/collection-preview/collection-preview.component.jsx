@@ -1,14 +1,14 @@
 import React from 'react';
 import './collection-preview.style.scss';
 import CollectionItem from '../collection-item/collection-item.component';
-import { withRouter, useHistory } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import CustomButton from '../../utils/custom-button/custom-button.component';
 
 const CollectionPreview = ({
   collection: { title, items, routeName },
+  history,
   match
 }) => {
-  const history = useHistory();
   return (
     <div className="collection-preview">
       <div className="preview-header">

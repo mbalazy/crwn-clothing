@@ -4,16 +4,14 @@ import './sign-in-and-sign-up.style.scss';
 import SignIn from '../../components/signing/sign-in/sign-in.component';
 import SignUp from '../../components/signing/sign-up/sign-up.component';
 
-import { useSelector } from 'react-redux';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 import {
   selectIsUserFetching,
   selectUserError
 } from '../../redux/reducers/user/user.selectors';
 
-const SignInAndSignUp = () => {
-  const isUserDataFetching = useSelector(selectIsUserFetching);
-  const userLoginError = useSelector(selectUserError);
-
+const SignInAndSignUp = ({ isUserDataFetching, userLoginError }) => {
   return (
     <main>
       {isUserDataFetching ? (
@@ -33,4 +31,9 @@ const SignInAndSignUp = () => {
   );
 };
 
-export default SignInAndSignUp;
+const mapStateToProps = createStructuredSelector({
+  isUserDataFetching: selectIsUserFetching,
+  userLoginError: selectUserError
+});
+
+export default connect(mapStateToProps)(SignInAndSignUp);

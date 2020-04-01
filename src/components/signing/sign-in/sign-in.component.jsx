@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import './sign-in.style.scss';
 import { withRouter } from 'react-router-dom';
 
-import { useDispatch } from 'react-redux';
+import { connect } from 'react-redux';
 import {
   googleSignInStart,
   emailSignInStart
@@ -10,9 +11,7 @@ import {
 import FormInput from '../../utils/form-input/form-input.component';
 import CustomButton from '../../utils/custom-button/custom-button.component';
 
-const SignIn = () => {
-  const dispatch = useDispatch();
-
+const SignIn = ({ emailSignInStart, googleSignInStart }) => {
   const [userCredentials, setCredentials] = useState({
     email: '',
     password: ''
@@ -22,7 +21,7 @@ const SignIn = () => {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    dispatch(emailSignInStart({ email, password }));
+    emailSignInStart(email, password);
   };
 
   const handleChange = e => {
@@ -59,9 +58,7 @@ const SignIn = () => {
           <CustomButton
             type="button"
             isGoogleSignIn
-            onClick={() => {
-              dispatch(googleSignInStart());
-            }}
+            onClick={googleSignInStart}
           >
             Sign In with Google
           </CustomButton>
@@ -71,4 +68,10 @@ const SignIn = () => {
   );
 };
 
-export default withRouter(SignIn);
+const mapDispatchToProps = dispatch => ({
+  googleSignInStart: () => dispatch(googleSignInStart()),
+  emailSignInStart: (email, password) =>
+    dispatch(emailSignInStart({ email, password }))
+});
+
+export default withRouter(connect(null, mapDispatchToProps)(SignIn));
